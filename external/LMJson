@@ -1,0 +1,38 @@
+#!/usr/bin/python
+
+import Leap,sys
+
+class LMJsonListener(Leap.Listener):
+	def on_init(self, controller):
+		print "LMJson: init"
+		pass
+	
+	def on_connect(self, controller):
+		print "LMJson: connect"
+		pass
+	
+	def on_disconnect(self, controller):
+		print "LMJson: disconnect"
+		pass
+	
+	def on_exit(self, controller):
+		print "LMJson: exit"
+		pass
+	
+	def on_frame(self, controller):
+		pass
+	
+def main():
+	listener = LMJsonListener()
+	controller = Leap.Controller()
+	controller.add_listener(listener)
+	
+	try:
+		sys.stdin.readline()
+	except KeyboardInterrupt:
+		pass
+	finally:
+		controller.remove_listener(listener)
+
+if __name__ == "__main__":
+	main()
