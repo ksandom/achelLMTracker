@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import Leap,sys
+import Leap,sys,json
 
 class LMJsonListener(Leap.Listener):
 	def on_init(self, controller):
@@ -20,6 +20,13 @@ class LMJsonListener(Leap.Listener):
 		pass
 	
 	def on_frame(self, controller):
+		frame = controller.frame()
+		
+		for hand in frame.hands:
+			whichHand = "left" if hand.is_left else "right"
+			data = {"whichHand":whichHand}
+			
+			print json.dumps(data)
 		pass
 	
 def main():
