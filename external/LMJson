@@ -22,12 +22,26 @@ class LMJsonListener(Leap.Listener):
 	def on_frame(self, controller):
 		frame = controller.frame()
 		
+		data = []
 		for hand in frame.hands:
 			whichHand = "left" if hand.is_left else "right"
-			data = {"whichHand":whichHand}
+			normal = hand.palm_normal
+			direction = hand.direction
+			position = hand.palm_position
 			
+			roll = normal.roll * Leap.RAD_TO_DEG
+			pitch = direction.pitch * Leap.RAD_TO_DEG
+			yaw = direction.yaw * Leap.RAD_TO_DEG
+			
+			x = position.x
+			y = position.x
+			z = position.x
+			
+			data.append({"whichHand":whichHand, "roll":roll, "pitch":pitch, "yaw":yaw, "x":x, "y":y, "z":z})
+		
+		hands=len(frame.hands)
+		if (hands > 0):
 			print json.dumps(data)
-		pass
 	
 def main():
 	listener = LMJsonListener()
