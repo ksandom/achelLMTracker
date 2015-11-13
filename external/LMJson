@@ -34,8 +34,8 @@ class LMJsonListener(Leap.Listener):
 			yaw = direction.yaw * Leap.RAD_TO_DEG
 			
 			x = position.x
-			y = position.x
-			z = position.x
+			y = position.y
+			z = position.z
 			
 			data.append({"whichHand":whichHand, "roll":roll, "pitch":pitch, "yaw":yaw, "x":x, "y":y, "z":z})
 		
