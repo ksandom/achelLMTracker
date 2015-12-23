@@ -4,20 +4,16 @@ import Leap,sys,json
 
 class LMJsonListener(Leap.Listener):
 	def on_init(self, controller):
-		print "LMJson: init"
-		pass
+		self.state("inactive", "starting up")
 	
 	def on_connect(self, controller):
-		print "LMJson: connect"
-		pass
+		self.state("inactive", "just connected")
 	
 	def on_disconnect(self, controller):
-		print "LMJson: disconnect"
-		pass
+		self.state("inactive", "just disconncted")
 	
 	def on_exit(self, controller):
-		print "LMJson: exit"
-		pass
+		self.state("inactive", "exit")
 	
 	def on_frame(self, controller):
 		frame = controller.frame()
@@ -42,6 +38,10 @@ class LMJsonListener(Leap.Listener):
 		hands=len(frame.hands)
 		if (hands > 0):
 			print json.dumps(data)
+	
+	def state(self, state, message):
+		print "{\"state\":\""+state+"\",\"stateReason\",\""+message+"\"}"
+	
 	
 def main():
 	listener = LMJsonListener()
