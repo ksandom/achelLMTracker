@@ -1,0 +1,17 @@
+# Unit tests for the LM Tracker ~ lmtracker,unitTest,hidden
+
+defineTest LMTracker - can get LMJson path,
+	getLMJsonPath Tmp,lmPath
+	expect ~!General,configDir!~/repos/achelLMTracker/external/LMJson,~!Tmp,lmPath!~
+
+defineTest LMTracker - can get stats,
+	createLMTrackerFaucet lMDemo,LMDemo,data
+	createNullFaucet lMNull
+	createPipe lMDemo,lMNull
+	
+	deliverAll
+	
+	expect inactive,~!LMDemo,data,status!~
+	
+	deleteFaucet LMDemo
+	deleteFaucet lMNull
