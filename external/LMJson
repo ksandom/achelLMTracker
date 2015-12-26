@@ -4,7 +4,7 @@ import Leap,sys,json
 
 class LMJsonListener(Leap.Listener):
 	def on_init(self, controller):
-		self.state("inactive", "starting up")
+		self.state("inactive", "starting up/waiting for a device to be connected")
 	
 	def on_connect(self, controller):
 		self.state("inactive", "just connected")
@@ -51,7 +51,7 @@ def main():
 	try:
 		sys.stdin.readline()
 	except KeyboardInterrupt:
-		pass
+		listener.state("closing","shutting down")
 	finally:
 		controller.remove_listener(listener)
 

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo '{"state":"starting","stateReason":"pre-startup"}'
+./LMJson
+echo '{"state":"exiting","stateReason":"late exit"}'
+
