@@ -2,7 +2,7 @@
 
 defineTest LMTracker - can get LMJson path,
 	getLMJsonPath Tmp,lmPath
-	expect ~!General,configDir!~/repos/achelLMTracker/external/LMJson,~!Tmp,lmPath!~
+	expect ~!General,configDir!~/repos/achelLMTracker/external,~!Tmp,lmPath!~
 
 defineTest LMTracker - can get stats,
 	createLMTrackerFaucet lMDemo,LMDemo,data
@@ -10,6 +10,14 @@ defineTest LMTracker - can get stats,
 	createPipe lMDemo,lMNull
 	
 	deliverAll
+	
+	getFaucets
+	nested
+	outNow
+	
+	getPipes
+	nested
+	outNow
 	
 	expect inactive,~!LMDemo,data,status!~
 	

@@ -2,8 +2,7 @@
 parameters faucetName,Category,variable 
 
 getLMJsonPath Local,LMJson
-debug 0,got ~!Local,LMJson!~
-createJsonShellFaucet ~!Local,faucetName!~-termjson,~!Local,Category!~,~!Local,variable!~,~!Local,LMJson!~
+createJsonShellFaucet ~!Local,faucetName!~-termjson,~!Local,Category!~,~!Local,variable!~,cd ~!Local,LMJson!~;./LMJsonWrapper;echo beep >&2
 createNullFaucet ~!Local,faucetName!~
 createPipe ~!Local,faucetName!~-termjson,~!Local,faucetName!~
 
