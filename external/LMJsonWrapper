@@ -1,6 +1,8 @@
 #!/bin/bash
 
+date > /tmp/started
 echo '{"state":"starting","stateReason":"pre-startup"}'
 ./LMJson
 echo '{"state":"exiting","stateReason":"late exit"}'
+date > /tmp/stopped
 
