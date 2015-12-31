@@ -4,22 +4,62 @@ defineTest LMTracker - can get LMJson path,
 	getLMJsonPath Tmp,lmPath
 	expect ~!General,configDir!~/repos/achelLMTracker/external,~!Tmp,lmPath!~
 
+defineTest LMTracker - can get LMJson path - Local,
+	getLMJsonPath Local,lmPath
+	expect ~!General,configDir!~/repos/achelLMTracker/external,~!Local,lmPath!~
+
+defineTest LMTracker - LMTracker wrapperTest test,
+	getLMJsonPath Tmp,lmPath
+	createJsonShellFaucet jsonDemo,Tmp,jsonDemo,~!Tmp,lmPath!~/LMJsonWrapperTest
+	createNullFaucet jsonNull
+	createPipe jsonDemo,jsonNull
+	
+	deliverAll 100000
+	
+	expect testing,~!Tmp,jsonDemo,state!~
+
+	deleteFaucet jsonDemo
+	deleteFaucet jsonNull
+	unset Tmp,jsonDemo
+
+
+defineTest LMTracker - LMTracker wrapper test,
+	getLMJsonPath Tmp,lmPath
+	createJsonShellFaucet jsonDemo,Tmp,jsonDemo,~!Tmp,lmPath!~/LMJsonWrapper
+	createNullFaucet jsonNull
+	createPipe jsonDemo,jsonNull
+	
+	deliverAll 100000
+	
+	expect exiting,~!Tmp,jsonDemo,state!~
+
+	deleteFaucet jsonDemo
+	deleteFaucet jsonNull
+	unset Tmp,jsonDemo
+
+defineTest LMTracker - LMTracker wrapper test with cd,
+	getLMJsonPath Tmp,lmPath
+	createJsonShellFaucet jsonDemo,Tmp,jsonDemo,cd ~!Tmp,lmPath!~;./LMJsonWrapper
+	createNullFaucet jsonNull
+	createPipe jsonDemo,jsonNull
+	
+	deliverAll 100000
+	
+	expect starting,~!Tmp,jsonDemo,state!~
+
+	deleteFaucet jsonDemo
+	deleteFaucet jsonNull
+	unset Tmp,jsonDemo
+
+
 defineTest LMTracker - can get stats,
 	createLMTrackerFaucet lMDemo,LMDemo,data
 	createNullFaucet lMNull
 	createPipe lMDemo,lMNull
 	
-	deliverAll
+	deliverAll 1000000
 	
-	getFaucets
-	nested
-	outNow
-	
-	getPipes
-	nested
-	outNow
-	
-	expect inactive,~!LMDemo,data,status!~
+	expectNot ,~!LMDemo,data,state!~
 	
 	deleteFaucet LMDemo
 	deleteFaucet lMNull

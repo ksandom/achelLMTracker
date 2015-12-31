@@ -1,6 +1,7 @@
 # Creates a faucet that dumps LM Tracker output to a specified variable. --createLMTrackerFaucet=faucetName,Category,variable . LMTracker provides support for leap motion. ~ LM,lmTracker,lmtracker
-parameters faucetName,Category,variable 
+parameters faucetName,Category,variable
+
 
 getLMJsonPath Local,LMJson
-createJsonShellFaucet ~!Local,faucetName!~,~!Local,Category!~,~!Local,variable!~,cd ~!Local,LMJson!~;./LMJsonWrapper;echo beep >&2
+createJsonShellFaucet ~!Local,faucetName!~,~!Local,Category!~,~!Local,variable!~,cd ~!Local,LMJson!~;./LMJsonWrapper
 
