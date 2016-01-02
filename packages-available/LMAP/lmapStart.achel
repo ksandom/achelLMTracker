@@ -1,0 +1,7 @@
+# Start the leap motion support in the auto pilot. ~ ap,lmtracker
+#onDefine registerForEvent AP,started,lmapStart
+
+# Create the faucet and link it accordingly.
+createLMTrackerFaucet LMTracker
+createNullFaucet LMNull
+createPipe LMTracker,LMNull
