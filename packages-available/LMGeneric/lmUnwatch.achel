@@ -1,0 +1,4 @@
+# Stop watching the lmtracker ~ watch,lmtracker,state
+#onDefine aliasFeature lmUnwatch,unwatchlm
+
+deleteTimer lmWatch

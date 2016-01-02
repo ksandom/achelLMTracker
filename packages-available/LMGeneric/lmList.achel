@@ -1,0 +1,6 @@
+# List the current data coming from the leap motion. --lmList=[Category=LMTracker[,variable=data]] ~ lmtracker,list
+#onDefine aliasFeature lmList,showLM,showlm
+parameters {"Category":"LMTracker","variable":"data"}
+
+retrieveResults ~!Local,Category!~,~!Local,variable!~
+outNow

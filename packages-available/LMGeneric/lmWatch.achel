@@ -1,0 +1,5 @@
+# Watch the LM tracker state. ~ watch,lmtracker,state
+#onDefine aliasFeature lmWatch,watchlm
+
+createTimer lmWatch,600000
+registerForEvent Timer,lmWatch,lmList
