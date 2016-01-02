@@ -2,7 +2,7 @@
 
 date > /tmp/started
 echo '{"state":"starting","stateReason":"pre-startup"}'
-./LMJson
+python -u ./LMJson
 echo '{"state":"exiting","stateReason":"late exit"}'
 date > /tmp/stopped
 

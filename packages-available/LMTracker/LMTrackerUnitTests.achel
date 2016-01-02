@@ -63,3 +63,15 @@ defineTest LMTracker - can get stats,
 	
 	deleteFaucet LMDemo
 	deleteFaucet lMNull
+
+defineTest LMTracker - can get stats using defaults,
+	createLMTrackerFaucet lMDemo
+	createNullFaucet lMNull
+	createPipe lMDemo,lMNull
+	
+	deliverAll 1000000
+	
+	expectNot ,~!LMTracker,data,state!~
+	
+	deleteFaucet LMDemo
+	deleteFaucet lMNull
