@@ -1,0 +1,4 @@
+# The easy command to call to use the LM tracker to control a plane. ~ lmap,lmtracker,user
+
+setAPState lmap
+lmWatch

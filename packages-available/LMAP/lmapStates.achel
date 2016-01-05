@@ -1,0 +1,103 @@
+# Create the LMAP states. ~ lmap,lmtracker,states
+#onDefine registerForEvent Balance,starting,lmapStates
+
+# TODO replacing default with default makes it work, but it not a good solution.
+
+# Sustain flight
+# Roll
+# setNested ["AP","stateRules","default","lmap","roll","algorithm","acceleration"]
+# setNested ["AP","stateRules","default","lmap","roll","output","accelerateMultiplier","0.2"]
+# setNested ["AP","stateRules","default","lmap","roll","output","decelerateMultiplier","0.5"]
+# setNested ["AP","stateRules","default","lmap","roll","input","maxChangePerSecond","5"]
+
+setNested ["AP","stateRules","default","lmap","roll","input","variable","AP,state,default,roll-deg"]
+setNested ["AP","stateRules","default","lmap","roll","input","min","-30"]
+setNested ["AP","stateRules","default","lmap","roll","input","center","0"]
+setNested ["AP","stateRules","default","lmap","roll","input","max","30"]
+setNested ["AP","stateRules","default","lmap","roll","input","goal","LMTracker,data,0,roll"]
+setNested ["AP","stateRules","default","lmap","roll","input","multiplier","10"]
+
+setNested ["AP","stateRules","default","lmap","roll","output","min","-1"]
+setNested ["AP","stateRules","default","lmap","roll","output","center","0"]
+setNested ["AP","stateRules","default","lmap","roll","output","max","1"]
+setNested ["AP","stateRules","default","lmap","roll","output","multiplier","1"]
+
+setNested ["AP","stateRules","default","lmap","roll","destination","variable","AP,state,default,aileron-req"]
+setNested ["AP","stateRules","default","lmap","roll","destination","textOutput","set /controls/flight/aileron ~%value%~"]
+
+
+
+# Pitch
+setNested ["AP","stateRules","default","lmap","pitch","input","variable","AP,state,default,pitch-deg"]
+setNested ["AP","stateRules","default","lmap","pitch","input","min","-90"]
+setNested ["AP","stateRules","default","lmap","pitch","input","center","0"]
+setNested ["AP","stateRules","default","lmap","pitch","input","max","90"]
+setNested ["AP","stateRules","default","lmap","pitch","input","goal","LMTracker,data,0,pitch"]
+setNested ["AP","stateRules","default","lmap","pitch","input","multiplier","3"]
+
+setNested ["AP","stateRules","default","lmap","pitch","output","min","-1"]
+setNested ["AP","stateRules","default","lmap","pitch","output","center","0"]
+setNested ["AP","stateRules","default","lmap","pitch","output","max","1"]
+setNested ["AP","stateRules","default","lmap","pitch","output","multiplier","0.8"]
+
+setNested ["AP","stateRules","default","lmap","pitch","destination","variable","AP,state,default,elevator-req"]
+setNested ["AP","stateRules","default","lmap","pitch","destination","textOutput","set /controls/flight/elevator ~%value%~"]
+
+
+
+# Yaw
+# setNested ["AP","stateRules","default","lmap","yaw","algorithm","acceleration"]
+# setNested ["AP","stateRules","default","lmap","yaw","output","accelerateMultiplier","0.06"]
+# setNested ["AP","stateRules","default","lmap","yaw","output","decelerateMultiplier","0.05"]
+# setNested ["AP","stateRules","default","lmap","yaw","input","maxChangePerSecond","5"]
+
+setNested ["AP","stateRules","default","lmap","yaw","input","variable","AP,state,default,track-deviance"]
+setNested ["AP","stateRules","default","lmap","yaw","input","min","-45"]
+setNested ["AP","stateRules","default","lmap","yaw","input","center","0"]
+setNested ["AP","stateRules","default","lmap","yaw","input","max","45"]
+setNested ["AP","stateRules","default","lmap","yaw","input","multiplier","10"]
+setNested ["AP","stateRules","default","lmap","yaw","input","goal","LMTracker,data,0,yaw"]
+
+setNested ["AP","stateRules","default","lmap","yaw","output","min","1"]
+setNested ["AP","stateRules","default","lmap","yaw","output","center","0"]
+setNested ["AP","stateRules","default","lmap","yaw","output","max","-1"]
+setNested ["AP","stateRules","default","lmap","yaw","output","multiplier","1"]
+
+setNested ["AP","stateRules","default","lmap","yaw","destination","variable","AP,state,default,rudder-req"]
+setNested ["AP","stateRules","default","lmap","yaw","destination","textOutput","set /controls/flight/rudder ~%value%~"]
+
+
+
+# Throttle
+setNested ["AP","stateRules","default","lmap","altitude","input","variable","AP,state,default,altitude-deviance"]
+setNested ["AP","stateRules","default","lmap","altitude","input","min","100"]
+setNested ["AP","stateRules","default","lmap","altitude","input","center","100"]
+setNested ["AP","stateRules","default","lmap","altitude","input","max","400"]
+setNested ["AP","stateRules","default","lmap","altitude","input","multiplier","1"]
+setNested ["AP","stateRules","default","lmap","altitude","input","goal","LMTracker,data,0,y"]
+
+setNested ["AP","stateRules","default","lmap","altitude","output","min","0"]
+setNested ["AP","stateRules","default","lmap","altitude","output","center","0"]
+setNested ["AP","stateRules","default","lmap","altitude","output","max","1"]
+setNested ["AP","stateRules","default","lmap","altitude","output","multiplier","1"]
+
+setNested ["AP","stateRules","default","lmap","altitude","destination","variable","AP,state,default,throttle-req"]
+setNested ["AP","stateRules","default","lmap","altitude","destination","textOutput","set /controls/engines/engine/throttle ~%value%~"]
+
+
+
+pass
+	# Yaw to Roll feedback 
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","input","variable","AP,state,default,roll-deg"]
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","input","min","-1"]
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","input","center","0"]
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","input","max","1"]
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","input","goal","AP,state,default,rudder-req"]
+
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","output","min","-10"]
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","output","center","0"]
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","output","max","10"]
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","output","multiplier","1"]
+
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","destination","variable","AP,state,default,roll-goal"]
+	setNested ["AP","stateRules","default","lmap","yawToRollFeedbackPart2","destination","textOutput",""]
