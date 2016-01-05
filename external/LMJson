@@ -25,15 +25,21 @@ class LMJsonListener(Leap.Listener):
 			direction = hand.direction
 			position = hand.palm_position
 			
+			# Process normal
 			roll = normal.roll * Leap.RAD_TO_DEG
 			pitch = direction.pitch * Leap.RAD_TO_DEG
 			yaw = direction.yaw * Leap.RAD_TO_DEG
+			
+			# Process inverted
+			rollInverted = normal.roll * Leap.RAD_TO_DEG * -1
+			pitchInverted = direction.pitch * Leap.RAD_TO_DEG * -1
+			yawInverted = direction.yaw * Leap.RAD_TO_DEG * -1
 			
 			x = position.x
 			y = position.y
 			z = position.z
 			
-			data.append({"whichHand":whichHand, "roll":roll, "pitch":pitch, "yaw":yaw, "x":x, "y":y, "z":z})
+			data.append({"whichHand":whichHand, "roll":roll, "rollInverted":rollInverted, "pitch":pitch, "pitchInverted":pitchInverted, "yaw":yaw, "yawInverted":yawInverted, "x":x, "y":y, "z":z})
 		
 		hands=len(frame.hands)
 		if (hands > 0):
