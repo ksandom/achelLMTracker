@@ -11,15 +11,15 @@
 # setNested ["AP","stateRules","default","lmap","roll","input","maxChangePerSecond","5"]
 
 setNested ["AP","stateRules","default","lmap","roll","input","variable","AP,state,default,roll-deg"]
-setNested ["AP","stateRules","default","lmap","roll","input","min","-30"]
+setNested ["AP","stateRules","default","lmap","roll","input","min","-55"]
 setNested ["AP","stateRules","default","lmap","roll","input","center","0"]
-setNested ["AP","stateRules","default","lmap","roll","input","max","30"]
-setNested ["AP","stateRules","default","lmap","roll","input","goal","LMTracker,data,0,roll"]
-setNested ["AP","stateRules","default","lmap","roll","input","multiplier","10"]
+setNested ["AP","stateRules","default","lmap","roll","input","max","55"]
+setNested ["AP","stateRules","default","lmap","roll","input","goal","LMTracker,data,0,rollInverted"]
+setNested ["AP","stateRules","default","lmap","roll","input","multiplier","0.8"]
 
-setNested ["AP","stateRules","default","lmap","roll","output","min","-1"]
+setNested ["AP","stateRules","default","lmap","roll","output","min","1"]
 setNested ["AP","stateRules","default","lmap","roll","output","center","0"]
-setNested ["AP","stateRules","default","lmap","roll","output","max","1"]
+setNested ["AP","stateRules","default","lmap","roll","output","max","-1"]
 setNested ["AP","stateRules","default","lmap","roll","output","multiplier","1"]
 
 setNested ["AP","stateRules","default","lmap","roll","destination","variable","AP,state,default,aileron-req"]
@@ -29,11 +29,11 @@ setNested ["AP","stateRules","default","lmap","roll","destination","textOutput",
 
 # Pitch
 setNested ["AP","stateRules","default","lmap","pitch","input","variable","AP,state,default,pitch-deg"]
-setNested ["AP","stateRules","default","lmap","pitch","input","min","-90"]
+setNested ["AP","stateRules","default","lmap","pitch","input","min","-45"]
 setNested ["AP","stateRules","default","lmap","pitch","input","center","0"]
-setNested ["AP","stateRules","default","lmap","pitch","input","max","90"]
+setNested ["AP","stateRules","default","lmap","pitch","input","max","45"]
 setNested ["AP","stateRules","default","lmap","pitch","input","goal","LMTracker,data,0,pitch"]
-setNested ["AP","stateRules","default","lmap","pitch","input","multiplier","3"]
+setNested ["AP","stateRules","default","lmap","pitch","input","multiplier","1"]
 
 setNested ["AP","stateRules","default","lmap","pitch","output","min","-1"]
 setNested ["AP","stateRules","default","lmap","pitch","output","center","0"]
@@ -51,11 +51,11 @@ setNested ["AP","stateRules","default","lmap","pitch","destination","textOutput"
 # setNested ["AP","stateRules","default","lmap","yaw","output","decelerateMultiplier","0.05"]
 # setNested ["AP","stateRules","default","lmap","yaw","input","maxChangePerSecond","5"]
 
-setNested ["AP","stateRules","default","lmap","yaw","input","variable","AP,state,default,track-deviance"]
-setNested ["AP","stateRules","default","lmap","yaw","input","min","-45"]
+setNested ["AP","stateRules","default","lmap","yaw","input","min","-15"]
 setNested ["AP","stateRules","default","lmap","yaw","input","center","0"]
-setNested ["AP","stateRules","default","lmap","yaw","input","max","45"]
-setNested ["AP","stateRules","default","lmap","yaw","input","multiplier","10"]
+setNested ["AP","stateRules","default","lmap","yaw","input","max","15"]
+setNested ["AP","stateRules","default","lmap","yaw","input","multiplier","1"]
+setNested ["AP","stateRules","default","lmap","yaw","input","variable","AP,stateRules,default,lmap,yaw,input,center"]
 setNested ["AP","stateRules","default","lmap","yaw","input","goal","LMTracker,data,0,yaw"]
 
 setNested ["AP","stateRules","default","lmap","yaw","output","min","1"]
