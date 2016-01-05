@@ -3,5 +3,5 @@ parameters {"faucetName":"","Category":"LMTracker","variable":"data"}
 
 
 getLMJsonPath Local,LMJson
-createJsonShellFaucet ~!Local,faucetName!~,~!Local,Category!~,~!Local,variable!~,cd ~!Local,LMJson!~;./LMJsonWrapper
+createJsonShellFaucet ~!Local,faucetName!~,~!Local,Category!~,~!Local,variable!~,cd ~!Local,LMJson!~;./LMJson
 

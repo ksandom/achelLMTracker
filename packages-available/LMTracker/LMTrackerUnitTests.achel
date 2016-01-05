@@ -37,6 +37,34 @@ defineTest LMTracker - LMTracker wrapper test,
 	deleteFaucet jsonNull
 	unset Tmp,jsonDemo
 
+defineTest LMTracker - LMTracker wrapper test - repeat,
+	getLMJsonPath Tmp,lmPath
+	createJsonShellFaucet jsonDemo,Tmp,jsonDemo,~!Tmp,lmPath!~/LMJsonWrapper
+	createNullFaucet jsonNull
+	createPipe jsonDemo,jsonNull
+	
+	deliverAll 100000
+	
+	expect exiting,~!Tmp,jsonDemo,state!~
+
+	deleteFaucet jsonDemo
+	deleteFaucet jsonNull
+	unset Tmp,jsonDemo
+
+defineTest LMTracker - LMTracker wrapper test - cd,
+	getLMJsonPath Tmp,lmPath
+	createJsonShellFaucet jsonDemo,Tmp,jsonDemo,echo got here! >&2;cd ~!Tmp,lmPath!~;./LMJsonWrapper >&1;echo stopped here! >&2
+	createNullFaucet jsonNull
+	createPipe jsonDemo,jsonNull
+	
+	deliverAll 100000
+	
+	expect exiting,~!Tmp,jsonDemo,state!~
+
+	deleteFaucet jsonDemo
+	deleteFaucet jsonNull
+	unset Tmp,jsonDemo
+
 defineTest LMTracker - LMTracker wrapper test with cd,
 	getLMJsonPath Tmp,lmPath
 	createJsonShellFaucet jsonDemo,Tmp,jsonDemo,cd ~!Tmp,lmPath!~;./LMJsonWrapper
