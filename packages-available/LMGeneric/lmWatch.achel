@@ -1,5 +1,6 @@
-# Watch the LM tracker state. ~ watch,lmtracker,state
+# Watch the LM tracker state. --lmWatch=[updateDelay=600000] ~ watch,lmtracker,state
 #onDefine aliasFeature lmWatch,watchlm
+parameters {"delay":"600000"}
 
-createTimer lmWatch,600000
+createTimer lmWatch,~!Local,delay!~
 registerForEvent Timer,lmWatch,lmList
