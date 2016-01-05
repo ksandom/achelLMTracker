@@ -40,7 +40,7 @@ class LMJsonListener(Leap.Listener):
 			print json.dumps(data)
 	
 	def state(self, state, message):
-		print "{\"state\":\""+state+"\",\"stateReason\",\""+message+"\"}"
+		print "{\"state\":\""+state+"\",\"stateReason\",\""+message+"\"}\n"
 	
 	
 def main():
